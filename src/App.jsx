@@ -1,13 +1,14 @@
 import './App.css'
+import { Routes, Route } from 'react-router'
 import { HomePage } from './Pages/HomePage'
 import './Pages/HomePage.css'
 import './Pages/header.css'
 
 function App() {
   return (
-    <>
-      <HomePage></HomePage>
-    </>
+    <Routes>
+      <Route path='/' element={<HomePage/>}></Route>
+    </Routes>
   )
 }
 
