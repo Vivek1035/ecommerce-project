@@ -6,6 +6,8 @@ export function HomePage() {
         <>
             <title>Ecommerce Project</title>
             <Header />
+            <link rel="icon" href="/home-favicon.png" />
+
 
             <div className="home-page">
                 <div className="products-grid">
