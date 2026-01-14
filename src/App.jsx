@@ -8,6 +8,8 @@ import { OrdersPage } from './Pages/orders/OrdersPage';
 import { TrackingPage } from './Pages/TrackingPage';
 import { PageNotFound } from './Pages/PageNotFound';
 
+window.axios = axios;
+
 function App() {
   const [cart, setCart] = useState([]);
 
