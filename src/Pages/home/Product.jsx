@@ -71,7 +71,6 @@ export function Product({ product, loadCart }) {
             <div className="added-to-cart"
                 style={{ opacity: showAddedMessage ? 1 : 0 }}
             >
-
                 <img src="images/icons/checkmark.png" />
                 Added
             </div>
