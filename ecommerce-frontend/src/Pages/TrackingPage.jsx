@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useParams } from 'react-router';
-import axios from 'axios';
+import { getOrderById } from '../api/api';
 import { useEffect, useState } from 'react';
 import { Header } from '../components/Header';
 import './TrackingPage.css'
@@ -12,12 +12,17 @@ export function TrackingPage({ cart }) {
 
     useEffect(() => {
         const fetchTrackingData = async () => {
-            const response = await axios.get(`/api/orders/${orderId}?expand=products`);
-            setOrder(response.data);
-        }
+            try {
+                const data = await getOrderById(orderId);
+                setOrder(data);
+            } catch (err) {
+                console.error("Failed to load order tracking", err);
+            }
+        };
 
         fetchTrackingData();
     }, [orderId]);
+
 
     if (!order) return null;
 

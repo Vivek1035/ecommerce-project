@@ -1,4 +1,4 @@
-import axios from "axios";
+import { updateCartItemQuantity, deleteCartItem } from "../../api/api";
 import { formatCurrency } from "../../utils/money";
 import { useState } from "react";
 
@@ -6,22 +6,32 @@ export function CartItemDetails({ cartItem, loadCart }) {
     const [isUpdatingQuantity, setIsUpdatingQuantity] = useState(false);
     const [quantity, setQuantity] = useState(cartItem.quantity);
 
-    const deleteCartItem = async () => {
-        await axios.delete(`/api/cart-items/${cartItem.productId}`);
-        await loadCart();
+    const handleDeleteCartItem = async () => {
+        try {
+            await deleteCartItem(cartItem.productId);
+            await loadCart();
+        } catch (err) {
+            console.error("Failed to delete cart item", err);
+        }
     };
 
-    const updateQuantity = async () => {
+    const handleUpdateQuantity = async () => {
         if (isUpdatingQuantity) {
-            await axios.put(`/api/cart-items/${cartItem.productId}`, {
-                quantity: Number(quantity)
-            });
-            await loadCart();
-            setIsUpdatingQuantity(false);
+            try {
+                await updateCartItemQuantity(
+                    cartItem.productId,
+                    Number(quantity)
+                );
+                await loadCart();
+                setIsUpdatingQuantity(false);
+            } catch (err) {
+                console.error("Failed to update quantity", err);
+            }
         } else {
             setIsUpdatingQuantity(true);
         }
     };
+
 
     const updateQuantityInput = (event) => {
         setQuantity(event.target.value);
@@ -29,7 +39,7 @@ export function CartItemDetails({ cartItem, loadCart }) {
 
     const keyQuantityPressed = (event) => {
         const keyPressed = event.key;
-        if (keyPressed === 'Enter') updateQuantity();
+        if (keyPressed === 'Enter') handleUpdateQuantity();
         if (keyPressed === 'Escape') {
             setQuantity(cartItem.quantity);
             setIsUpdatingQuantity(false);
@@ -56,11 +66,11 @@ export function CartItemDetails({ cartItem, loadCart }) {
                             : <span className="quantity-label">{cartItem.quantity}</span>}
                     </span>
                     <span className="update-quantity-link link-primary"
-                        onClick={updateQuantity}>
+                        onClick={handleUpdateQuantity}>
                         Update
                     </span>
                     <span className="delete-quantity-link link-primary"
-                        onClick={deleteCartItem}>
+                        onClick={handleDeleteCartItem}>
                         Delete
                     </span>
                 </div>

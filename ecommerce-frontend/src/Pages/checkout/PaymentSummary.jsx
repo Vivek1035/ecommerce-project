@@ -1,15 +1,20 @@
-import axios from "axios";
+import { createOrder } from "../../api/api";
 import { formatCurrency } from "../../utils/money";
 import { useNavigate } from "react-router";
 
 export function PaymentSummary({ paymentSummary, loadCart }) {
     const navigate = useNavigate();
 
-    const createOrder = async () => {
-        await axios.post('/api/orders');
-        await loadCart();
-        navigate('/orders');
+    const handleCreateOrder = async () => {
+        try {
+            await createOrder();
+            await loadCart();
+            navigate("/orders");
+        } catch (err) {
+            console.error("Failed to create order", err);
+        }
     };
+
 
     return (
         <div className="payment-summary">
@@ -71,7 +76,7 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
 
                     <button className="place-order-button button-primary"
                         data-testid="place-order-button"
-                        onClick={createOrder}>
+                        onClick={handleCreateOrder}>
                         Place your order
                     </button>
                 </>

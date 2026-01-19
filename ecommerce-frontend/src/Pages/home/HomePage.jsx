@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getProducts } from '../../api/api';
 import { useEffect, useState } from 'react';
 import { ProductsGrid } from './ProductsGrid';
 import './HomePage.css';
@@ -12,22 +12,26 @@ export function HomePage({ cart, loadCart }) {
 
     useEffect(() => {
         const getHomeData = async () => {
-        const urlPath = search ? `/api/products?search=${search}` : '/api/products';   
-        const response = await axios.get(urlPath);
-        setProducts(response.data);
-        }
-         
+            try {
+                const data = await getProducts(search);
+                setProducts(data);
+            } catch (err) {
+                console.error("Failed to load products", err);
+            }
+        };
+
         getHomeData();
     }, [search]);
+
 
     return (
         <>
             <title>Ecommerce Project</title>
-            <Header cart = {cart}/>
+            <Header cart={cart} />
             <link rel="icon" href="/home-favicon.png" />
 
             <div className="home-page">
-                <ProductsGrid products={products} loadCart={loadCart}/>
+                <ProductsGrid products={products} loadCart={loadCart} />
             </div>
         </>
     );

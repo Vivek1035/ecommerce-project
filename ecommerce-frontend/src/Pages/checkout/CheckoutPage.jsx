@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getDeliveryOptions, getPaymentSummary } from '../../api/api';
 import { useState, useEffect } from 'react';
 import { CheckoutHeader } from './CheckoutHeader';
 import './CheckoutPage.css';
@@ -12,20 +12,28 @@ export function CheckoutPage({ cart, loadCart }) {
 
     useEffect(() => {
         const fetchCheckoutData = async () => {
-            const response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-            setDeliveryOptions(response.data);
-        }
+            try {
+                const data = await getDeliveryOptions();
+                setDeliveryOptions(data);
+            } catch (err) {
+                console.error("Failed to load delivery options", err);
+            }
+        };
 
         fetchCheckoutData();
     }, []);
 
     useEffect(() => {
-        const fetchPaymentSummary = async () => {
-            const response = await axios.get('/api/payment-summary');
-            setPaymentSummary(response.data);
-        }
+        const fetchPaymentSummaryData = async () => {
+            try {
+                const data = await getPaymentSummary();
+                setPaymentSummary(data);
+            } catch (err) {
+                console.error("Failed to load payment summary", err);
+            }
+        };
 
-        fetchPaymentSummary();
+        fetchPaymentSummaryData();
     }, [cart]);
 
 
