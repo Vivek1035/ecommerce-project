@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev:frontend": "npm --prefix ecommerce-frontend run dev",
+    "dev:frontend": "npm --prefix ecommerce-project-frontend run dev",
     "dev:backend": "npm --prefix ecommerce-backend run dev",
 
-    "build:frontend": "npm --prefix ecommerce-frontend run build",
+    "build:frontend": "npm --prefix ecommerce-project-frontend run build",
     "build:backend": "npm --prefix ecommerce-backend run zip",
 
     "build": "run-s build:frontend build:backend"
