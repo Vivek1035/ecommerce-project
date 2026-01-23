@@ -1,16 +1,99 @@
-# React + Vite
+# E-Commerce Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack e-commerce application built with React, TypeScript, and Node.js.
 
-Currently, two official plugins are available:
+## 🚀 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a modern e-commerce platform with a React-based frontend and a Node.js backend. The application provides a complete shopping experience with product browsing, cart management, and order processing.
 
-## React Compiler
+## 📁 Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+ecommerce-project/
+├── ecommerce-project-frontend/   # React + TypeScript frontend
+├── ecommerce-backend/             # Node.js backend API
+└── README.md
+```
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- **React** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Build tool and dev server
+- **ESLint** - Code linting
+
+### Backend
+- **Node.js** (v22+)
+- **Express** - Web framework (likely)
+- RESTful API architecture
+
+## 📦 Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (version 22 or higher)
+- npm (comes with Node.js)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Vivek1035/ecommerce-project.git
+   cd ecommerce-project
+   ```
+
+2. **Set up the Backend**
+   ```bash
+   cd ecommerce-backend
+   npm install
+   npm run dev
+   ```
+   The backend will start running (default port is usually 3000 or 5000).
+
+3. **Set up the Frontend** (in a new terminal)
+   ```bash
+   cd ecommerce-project-frontend
+   npm install
+   npm run dev
+   ```
+   The frontend will start running (typically on http://localhost:5173).
+
+## 🎯 Features
+
+- Product catalog and browsing
+- Shopping cart functionality
+- User authentication
+- Order management
+- Responsive design
+- RESTful API backend
+
+## 📚 Documentation
+
+- [Frontend Documentation](./ecommerce-project-frontend/README.md)
+- [Backend Documentation](./ecommerce-backend/README.md)
+- [Backend Troubleshooting](./ecommerce-backend/troubleshooting.md)
+
+## 🎥 Video Tutorials
+
+**Backend Setup Tutorial:** [Create the Backend](https://youtu.be/vBprybSmJs8)
+
+## 🤖 Development
+
+This project was built with the assistance of AI tools to accelerate development.
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 👤 Author
+
+**Vivek1035**
+- GitHub: [@Vivek1035](https://github.com/Vivek1035)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Vivek1035/ecommerce-project/issues).
+
+## ⭐ Show your support
+
+Give a ⭐️ if you like this project!
