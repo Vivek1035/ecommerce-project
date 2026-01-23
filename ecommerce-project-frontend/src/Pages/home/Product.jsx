@@ -1,7 +1,7 @@
 import { addToCart as addToCartApi } from "../../api/api";
 import { useState } from "react";
 import { formatCurrency } from "../../utils/money";
-
+import checkmarkIcon from "../../assets/images/icons/checkmark.png";
 
 export function Product({ product, loadCart }) {
     const [quantity, setQuantity] = useState(1);
@@ -70,7 +70,7 @@ export function Product({ product, loadCart }) {
             <div className="added-to-cart"
                 style={{ opacity: showAddedMessage ? 1 : 0 }}
             >
-                <img src="images/icons/checkmark.png" />
+                <img src={checkmarkIcon} alt="Added" />
                 Added
             </div>
 
